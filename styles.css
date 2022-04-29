@@ -75,3 +75,15 @@ main {
     padding: 0rem 2rem;
   }
 }
+.copy-notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  text-align: center;
+}
+
+.copy-notification.hidden {
+  visibility: hidden;
+}

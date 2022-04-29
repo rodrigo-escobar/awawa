@@ -1,9 +1,15 @@
 const input = document.querySelector('.user-input');
 const finalResult = document.querySelector('.result');
 
-const button = document.querySelector('.copy');
+const message = document.querySelector('.copy-notification');
 
+const button = document.querySelector('.copy');
+const removeMessage = document.querySelector('.delete');
+
+removeMessage.addEventListener('click', hiddeMessage);
 button.addEventListener('click', onCopy);
+
+let removeMessageTimeout;
 
 function onCopy() {
   const changedString = changeString(input.value);
@@ -12,6 +18,27 @@ function onCopy() {
   copyText();
 
   input.value = '';
+
+  showMessage();
+
+  if (removeMessageTimeout) {
+    clearTimeout(removeMessageTimeout);
+    removeMessageTimeout = null;
+  }
+
+  removeMessageTimeout = setTimeout(() => {
+    hiddeMessage();
+  }, 5000);
+}
+
+function showMessage() {
+  message.classList.add('animate__bounceIn');
+  message.classList.remove('hidden');
+}
+
+function hiddeMessage() {
+  message.classList.remove('animate__bounceIn');
+  message.classList.add('hidden');
 }
 
 function copyText() {
