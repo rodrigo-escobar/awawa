@@ -19,6 +19,7 @@ function copyText() {
   finalResult.setSelectionRange(0, 99999);
 
   navigator.clipboard.writeText(finalResult.value);
+  document.execCommand('copy');
 }
 
 const noChangeCharacters = [' ', '!', '?'];
